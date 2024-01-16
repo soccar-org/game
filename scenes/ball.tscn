@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ua2fw6wekd3"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cvxaaww104uct" path="res://assets/bounciness.tres" id="1_683ek"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3rjh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5w6pe"]
+material = SubResource("StandardMaterial3D_n3rjh")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nsfs7"]
+radius = 1.0
+
+[node name="Ball" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 0.4
+physics_material_override = ExtResource("1_683ek")
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_5w6pe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nsfs7")

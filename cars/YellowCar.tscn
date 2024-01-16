@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfjr5gbtbukrf"]
+
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
+[ext_resource type="PackedScene" uid="uid://cdp214kstxny7" path="res://cars/Models/Wheel.glb" id="2_jsoj2"]
+[ext_resource type="PackedScene" uid="uid://bf3jxt302enrx" path="res://cars/Models/car.glb" id="3_o1yia"]
+[ext_resource type="Script" path="res://cars/PlayerCamera.gd" id="3_vsrqj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txofx"]
+size = Vector3(8.6, 2.8, 4)
+
+[node name="car" instance=ExtResource("1_cfkas")]
+mass = 2.0
+continuous_cd = true
+
+[node name="wheal0" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.40196)
+use_as_steering = false
+wheel_roll_influence = 0.01
+wheel_radius = 0.5
+wheel_rest_length = 0.15
+wheel_friction_slip = 10.5
+suspension_stiffness = 5.88
+suspension_max_force = 6000.0
+
+[node name="wheal1" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.40196)
+use_as_steering = false
+wheel_roll_influence = 0.01
+wheel_radius = 0.5
+wheel_rest_length = 0.15
+wheel_friction_slip = 10.5
+suspension_stiffness = 5.88
+suspension_max_force = 6000.0
+
+[node name="wheal2" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.286814, 1.43305)
+use_as_traction = false
+use_as_steering = true
+wheel_roll_influence = 0.01
+wheel_radius = 0.5
+wheel_rest_length = 0.15
+wheel_friction_slip = 10.5
+suspension_stiffness = 5.88
+suspension_max_force = 6000.0
+
+[node name="wheal3" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.286814, 1.43305)
+use_as_traction = false
+use_as_steering = true
+wheel_roll_influence = 0.01
+wheel_radius = 0.5
+wheel_rest_length = 0.15
+wheel_friction_slip = 10.5
+suspension_stiffness = 5.88
+suspension_max_force = 6000.0
+
+[node name="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(-2.66639e-08, 0, 0.61, 0, 0.61, 0, -0.61, 0, -2.66639e-08, 0, 0.98, 0.055)
+shape = SubResource("BoxShape3D_txofx")
+
+[node name="CarModel" parent="." index="5" instance=ExtResource("3_o1yia")]
+transform = Transform3D(7.85626e-08, 0, -0.599101, 0, 0.599101, 0, 0.599101, 0, 7.85626e-08, 0.0166864, 0.0802646, 0.00380594)
+
+[node name="TwistPivot" type="Node3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+script = ExtResource("3_vsrqj")
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.995396, -0.0958458, 0, 0.0958458, 0.995396, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot" index="0"]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -6)
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, 1.4)
+
+[node name="WheelMesh" parent="FrontLeftWheel" index="0" instance=ExtResource("2_jsoj2")]
+transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-08, 0, 0, 0)
+
+[node name="FrontRightWheel" type="VehicleWheel3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 1.4)
+
+[node name="WheelMesh" parent="FrontRightWheel" index="0" instance=ExtResource("2_jsoj2")]
+transform = Transform3D(-2.8325e-08, 0, 0.648, 0, 0.648, 0, -0.648, 0, -2.8325e-08, 0, 0, 0)
+
+[node name="RearLeftWheel" type="VehicleWheel3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, -1.4)
+
+[node name="WheelMesh" parent="RearLeftWheel" index="0" instance=ExtResource("2_jsoj2")]
+transform = Transform3D(-2.8325e-08, 0, -0.648, 0, 0.648, 0, 0.648, 0, -2.8325e-08, 0, 0, 0)
+
+[node name="RearRightWheel" type="VehicleWheel3D" parent="." index="11"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1, 0.3, -1.4)
+wheel_radius = 1.0
+
+[node name="WheelMesh" parent="RearRightWheel" index="0" instance=ExtResource("2_jsoj2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

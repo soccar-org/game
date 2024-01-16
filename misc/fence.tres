@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://dcxrrq7ln6iye"]
+
+[ext_resource type="Texture2D" uid="uid://bi64vb0yu6ll" path="res://Metal_Fence_001_SD/Metal_Fence_001_opacity.jpg" id="1_kqpw4"]
+[ext_resource type="Texture2D" uid="uid://bygwwcoaoqok8" path="res://Metal_Fence_001_SD/Metal_Fence_001_ambientOcclusion.jpg" id="2_8k10i"]
+[ext_resource type="Texture2D" uid="uid://bmdygl7i2li6l" path="res://Metal_Fence_001_SD/Metal_Fence_001_height.png" id="3_r4gmn"]
+[ext_resource type="Texture2D" uid="uid://h43mph2yhxov" path="res://Metal_Fence_001_SD/Metal_Fence_001_metallic.jpg" id="4_8hy0j"]
+[ext_resource type="Texture2D" uid="uid://bf8feka8nu8pv" path="res://Metal_Fence_001_SD/Metal_Fence_001_normal.jpg" id="5_k33lo"]
+[ext_resource type="Texture2D" uid="uid://bkmojkm4ocypb" path="res://Metal_Fence_001_SD/Metal_Fence_001_roughness.jpg" id="6_h5njd"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_kqpw4")
+metallic = 1.0
+metallic_texture = ExtResource("4_8hy0j")
+roughness_texture = ExtResource("6_h5njd")
+normal_enabled = true
+normal_scale = -1.13
+normal_texture = ExtResource("5_k33lo")
+ao_enabled = true
+ao_texture = ExtResource("2_8k10i")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_r4gmn")
+uv1_scale = Vector3(5, 5, 5)

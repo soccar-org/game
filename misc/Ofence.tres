@@ -1,0 +1,7 @@
+[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://c2kybkcwqri3k"]
+
+[ext_resource type="Material" uid="uid://dcxrrq7ln6iye" path="res://misc/fence.tres" id="1_hv6cf"]
+
+[resource]
+material = ExtResource("1_hv6cf")
+size = Vector2(40, 125)

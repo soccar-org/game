@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://dn2t6vtqxeiiu"]
+
+[ext_resource type="PlaneMesh" uid="uid://d2qcjm55qdfhi" path="res://misc/goal-wall.tres" id="1_oi5o2"]
+[ext_resource type="Shape3D" uid="uid://cxwbjf1xxkq7" path="res://misc/goalWall-collision.tres" id="2_pe78p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtvok"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_52in2"]
+material = SubResource("StandardMaterial3D_rtvok")
+size = Vector2(140, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cgy67"]
+size = Vector3(140, 0.1, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rk777"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e7omf"]
+material = SubResource("StandardMaterial3D_rk777")
+size = Vector2(15, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lsf75"]
+size = Vector3(15, 0.01, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkhbj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m0j73"]
+material = SubResource("StandardMaterial3D_rkhbj")
+size = Vector2(10, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4c3f"]
+size = Vector3(10, 0.01, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdmpy"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_simm6"]
+material = SubResource("StandardMaterial3D_mdmpy")
+size = Vector2(15, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnob6"]
+size = Vector3(15, 0.01, 10)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="side-L" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 55, -60)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="side-L"]
+mesh = ExtResource("1_oi5o2")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="side-L"]
+shape = ExtResource("2_pe78p")
+
+[node name="side-L2" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 55, 60)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="side-L2"]
+mesh = ExtResource("1_oi5o2")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="side-L2"]
+shape = ExtResource("2_pe78p")
+
+[node name="side-M" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 65, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="side-M"]
+mesh = SubResource("PlaneMesh_52in2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="side-M"]
+shape = SubResource("BoxShape3D_cgy67")
+
+[node name="goal" type="Node3D" parent="."]
+
+[node name="front" type="StaticBody3D" parent="goal"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, -12.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="goal/front"]
+mesh = SubResource("PlaneMesh_e7omf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="goal/front"]
+shape = SubResource("BoxShape3D_lsf75")
+
+[node name="top" type="StaticBody3D" parent="goal"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 5, -5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="goal/top"]
+mesh = SubResource("PlaneMesh_m0j73")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="goal/top"]
+shape = SubResource("BoxShape3D_x4c3f")
+
+[node name="side-L" type="StaticBody3D" parent="goal"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 5, -12.5, -15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="goal/side-L"]
+mesh = SubResource("PlaneMesh_simm6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="goal/side-L"]
+shape = SubResource("BoxShape3D_jnob6")
+
+[node name="side-R" type="StaticBody3D" parent="goal"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 5, -12.5, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="goal/side-R"]
+mesh = SubResource("PlaneMesh_simm6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="goal/side-R"]
+shape = SubResource("BoxShape3D_jnob6")
